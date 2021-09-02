@@ -16,4 +16,4 @@ jobs:
         run: docker images
 
       - name: run test-react-app image with 'npm run test' command
-        run: docker run jwandekoken/test-react-app 'CI=true npm run test'
+        run: docker run jwandekoken/test-react-app npm run test
