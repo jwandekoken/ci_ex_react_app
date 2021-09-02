@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: log docker version
-      - run: docker -v
+        run: docker -v
