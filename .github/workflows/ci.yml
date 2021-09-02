@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: build image from Dockerfile.dev
-        run: "docker build -t jwandekoken/test-react-app -f Dockerfile.dev"
+        run: "docker build -t 'jwandekoken/test-react-app' -f Dockerfile.dev"
 
       - name: log docker images
         run: docker images
