@@ -9,8 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: log files
-        run: ls -la
+      - name: build image from Dockerfile.dev
+        run: docker build -t jwandekoken/test-react-app -f Dockerfile.dev
 
-      - name: log docker version
-        run: docker -v
+      - name: log docker images
+        run: docker images
