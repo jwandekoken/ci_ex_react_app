@@ -8,5 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: log files
+        run: ls -la
+
       - name: log docker version
         run: docker -v
