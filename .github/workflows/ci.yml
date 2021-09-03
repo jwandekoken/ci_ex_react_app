@@ -4,7 +4,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  test-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,3 +17,17 @@ jobs:
 
       - name: run test-react-app image with 'npm run test' command
         run: docker run -e CI=true jwandekoken/test-react-app npm run test
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x "**node_modules**"
+
+      - name: deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v18
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: docker-react
+          environment_name: Dockerreact-env
+          version_label: 0.1
+          region: us-east-1
+          deployment_package: deploy.zip
